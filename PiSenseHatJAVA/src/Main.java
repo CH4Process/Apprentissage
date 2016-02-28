@@ -16,6 +16,7 @@ public class Main {
 	
 	private static I2CBus bus;
 	private static SenseHat senseHat;
+	private static BDD bdd;
 	private static float temperature;
 
 	public static void main(String[] args) 
@@ -30,7 +31,10 @@ public class Main {
 			
 			System.out.println("Temperature read from humidity sensor : " + temperature + "°C");
 			
-			
+			bdd = new BDD();
+			bdd.Connect("localhost","bdd_java", "java", "javabddpwd");
+			int resultat = bdd.LogTemperature(temperature);
+			System.out.println("Log en base : " + resultat + " elements inseres.");
 		}
 		catch (IOException ex)
 		{
