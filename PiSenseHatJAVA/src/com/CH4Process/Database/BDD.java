@@ -69,4 +69,16 @@ public class BDD
 			}
 		}
 	}
+
+	public void Disconnect()
+	{
+		try
+		{
+			connexion.close();
+		}
+		catch (SQLException ex)
+		{
+			ex.printStackTrace();
+		}
+	}
 }
