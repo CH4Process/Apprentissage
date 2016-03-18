@@ -11,6 +11,7 @@
  * Initial : 26/02/2016
  * 
  */
+package com.CH4Process.PiSenseHat;
 
 import java.io.IOException;
 

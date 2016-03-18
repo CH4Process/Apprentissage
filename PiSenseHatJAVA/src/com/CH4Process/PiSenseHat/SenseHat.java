@@ -10,6 +10,7 @@
  */
 
 //import java.io.IOException;
+package com.CH4Process.PiSenseHat;
 
 import com.pi4j.io.i2c.I2CBus;
 
