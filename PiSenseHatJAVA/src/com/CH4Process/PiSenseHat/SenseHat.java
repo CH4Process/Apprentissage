@@ -31,5 +31,11 @@ public class SenseHat
 	{
 		return HumiditySensor.getTemperature();
 	}
+	
+	public void close()
+	{
+		HumiditySensor.close();
+		HumiditySensor = null;
+	}
 
 }

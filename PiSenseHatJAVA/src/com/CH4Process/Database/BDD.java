@@ -62,6 +62,7 @@ public class BDD
 			try
 			{
 				statement.close();
+				statement = null;
 			}
 			catch (SQLException ex)
 			{
@@ -75,6 +76,7 @@ public class BDD
 		try
 		{
 			connexion.close();
+			connexion = null;
 		}
 		catch (SQLException ex)
 		{

@@ -148,4 +148,9 @@ public class HTS221
 		}
 	}
 	
+	public void close()
+	{
+		this.device = null;
+	}
+	
 }
