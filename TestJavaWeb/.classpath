@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/Java">
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
 		<attributes>
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
@@ -13,7 +13,6 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="D:/DEV/CODE/LIBRARIES/JAVA/CH4Process/PiSenseHat.jar"/>
 	<classpathentry kind="lib" path="D:/DEV/CODE/LIBRARIES/JAVA/mysql-connector-java-5.1.38/mysql-connector-java-5.1.38-bin.jar"/>
 	<classpathentry kind="lib" path="D:/DEV/CODE/LIBRARIES/JAVA/PI4J/junit.jar"/>
 	<classpathentry kind="lib" path="D:/DEV/CODE/LIBRARIES/JAVA/PI4J/pi4j-core.jar"/>
@@ -21,5 +20,6 @@
 	<classpathentry kind="lib" path="D:/DEV/CODE/LIBRARIES/JAVA/PI4J/pi4j-gpio-extension.jar"/>
 	<classpathentry kind="lib" path="D:/DEV/CODE/LIBRARIES/JAVA/PI4J/pi4j-service.jar"/>
 	<classpathentry kind="lib" path="D:/DEV/CODE/LIBRARIES/JAVA/JSTL/jstl-1.2.jar"/>
+	<classpathentry kind="lib" path="D:/DEV/CODE/LIBRARIES/JAVA/CH4Process/PiSenseHat.jar"/>
 	<classpathentry kind="output" path="WebContent/WEB-INF/classes"/>
 </classpath>

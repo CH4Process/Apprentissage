@@ -1,7 +1,6 @@
 package com.TestJavaWeb.servlet;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -62,8 +61,8 @@ public class ServletTest extends HttpServlet {
 			
 			bus.close();
 			bus = null;
-			senseHat = null;
 			senseHat.close();
+			senseHat = null;
 			bdd = null;
 		}
 		catch (Exception ex)

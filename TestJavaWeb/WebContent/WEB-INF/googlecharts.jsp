@@ -12,34 +12,38 @@
 <body>
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <div id="chart_div"></div>
+  <div id="table_div"></div>
   <script>
   
-  google.charts.load('current', {packages: ['corechart', 'line']});
-  google.charts.setOnLoadCallback(drawBackgroundColor);
-
-  function drawBackgroundColor() {
-	
-				var data = new google.visualization.DataTable();
-				data.addColumn('datetime', 'Date');
-				data.addColumn('number', 'Temperature');
+  google.charts.load('current', {packages: ['corechart', 'line','table']});
+  google.charts.setOnLoadCallback(drawLineChart);
+  
+  function drawLineChart() 
+  {
+	var data = new google.visualization.DataTable();
+	data.addColumn('datetime', 'Date');
+	data.addColumn('number', 'Temperature');
 				
-				data.addRows([<jstl_core:forEach items="${bddrequest.requestResultArray}" var="entry">[new Date(${entry[0]}),${entry[1]}],</jstl_core:forEach>]);
+	data.addRows([<jstl_core:forEach items="${bddrequest.requestResultArray}" var="entry">[new Date(${entry[0]}),${entry[1]}],</jstl_core:forEach>]);
 				
-				var options = {
-					hAxis : {
-						title : 'Date',
-					},
-					vAxis : {
-						title : 'Temperature',
-					},
-					backgroundColor : '#f1f8e9'
-				};
+	var line_options = 
+	{
+		hAxis : {
+		title : 'Date',
+	},
+		vAxis : {
+		title : 'Temperature',
+	},
+		backgroundColor : '#f1f8e9'
+	};
 
-				var chart = new google.visualization.LineChart(document
-						.getElementById('chart_div'));
-				chart.draw(data, options);
-			}
-		</script>
+	var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+	chart.draw(data, line_options);
+	var table = new google.visualization.Table(document.getElementById('table_div'));
+    table.draw(data, {showRowNumber: true, width: '100%', height: '100%'});
+	}
+  
+	</script>
 
 </body>
 </html>
