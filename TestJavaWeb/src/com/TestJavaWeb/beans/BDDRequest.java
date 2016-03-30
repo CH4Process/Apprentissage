@@ -3,13 +3,21 @@ package com.TestJavaWeb.beans;
 import java.sql.*;
 import java.util.ArrayList;
 
+/**
+ * @author Alex
+ *
+ */
+
 public class BDDRequest 
 {
 	final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-	final String USER = "java";
-	final String PWD = "javabddpwd";
-	//final String URL = "jdbc:mysql://localhost:3306/bdd_java";
-	final String URL = "jdbc:mysql://192.168.0.7:3306/bdd_java";
+	final String URL = "jdbc:mysql://";
+	final String DATABASEPORT = "3306";
+	private String databaseUser = "";
+	private String databasePassword = "";
+	private String databaseName = "";
+	private String connectionString = "";
+	private String databaseAddress = "";
 
 	private Connection connection = null;
 	private Statement statement = null;
@@ -19,17 +27,29 @@ public class BDDRequest
 	private Long[][] requestResultArray;
 	
 	
+	
 	/**
+	 * @param ip = IP Address of the database. Can be the string "localhost"
+	 * @param database = Database name
+	 * @param user = User with rights on the database
+	 * @param password = Password of the User
 	 * Constructor of the class
 	 */
-	public BDDRequest()
+	public BDDRequest(String ip, String database, String user, String password)
 	{
+		this.databaseAddress = ip;
+		this.databaseName = database;
+		this.databaseUser = user;
+		this.databasePassword = password;
+		
+		this.connectionString = URL + databaseAddress + ":" + DATABASEPORT + "/" + databaseName;
+		
 		try
 		{
 			// Trying to get the driver
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName(JDBC_DRIVER);
 			// Creating the connection to the SQL server using the user password and connection string provided
-			connection = DriverManager.getConnection(URL, USER, PWD);
+			connection = DriverManager.getConnection(connectionString, databaseUser, databasePassword);
 		}
 		catch (SQLException ex)
 		{
@@ -63,7 +83,8 @@ public class BDDRequest
 				Long[] dataset = new Long[2];
 
 				dataset[0] = date.getTime();
-				dataset[1] = (long) value;
+				// Value x 1000 to keep the precision and get rid of the floating point value
+				dataset[1] = (long) (value * 1000);
 				
 				// Addind the result into an array
 				requestResult.add(dataset);

@@ -1,6 +1,8 @@
 package com.TestJavaWeb.servlet;
 
 import java.io.IOException;
+import java.net.Inet4Address;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,6 +23,11 @@ public class ServletTest extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 	
+	private static String piAddress = "192.168.0.7";
+	private static String databaseName = "bdd_java";
+	private static String databaseUser = "java";
+	private static String databasePassword = "javabddpwd";
+	
 	// Variables for reading the values in the Pi Sense Hat
 	private static I2CBus bus;
 	private static float temperature;
@@ -29,6 +36,9 @@ public class ServletTest extends HttpServlet {
 	private static SenseHat senseHat;
 	private static BDD bdd;
 	BDDRequest bddrequest;
+	
+	// Debugging stuff
+	private static String ipaddress;
 	
     /**
      * @see HttpServlet#HttpServlet()
@@ -44,26 +54,29 @@ public class ServletTest extends HttpServlet {
 		// This method handles the HTTP request and transfers it to the JSP
 		try
 		{
-			// Connection to the I2CBus of the Pi and reading a temperature value
-			bus = I2CFactory.getInstance(I2CBus.BUS_1);
-			System.out.println("Connected to I2CBus !");
-
-			senseHat = new SenseHat(bus);
-			temperature = senseHat.getTemperatureFromHumidity();
-
-			//System.out.println("Temperature read from humidity sensor : " + temperature + "°C");
-
-			// Storing the value in database
-			bdd = new BDD();
-			bdd.Connect("192.168.0.7","bdd_java", "java", "javabddpwd");
-			bdd.LogTemperature(temperature);
-			bdd.Disconnect();
+			ipaddress = Inet4Address.getLocalHost().getHostAddress();
 			
-			bus.close();
-			bus = null;
-			senseHat.close();
-			senseHat = null;
-			bdd = null;
+			if (ipaddress == piAddress)
+			{
+				// Connection to the I2CBus of the Pi and reading a temperature value
+				bus = I2CFactory.getInstance(I2CBus.BUS_1);
+
+				senseHat = new SenseHat(bus);
+				temperature = senseHat.getTemperatureFromHumidity();
+				
+				// Storing the value in database
+				bdd = new BDD();
+				bdd.Connect(piAddress,databaseName, databaseUser, databasePassword);
+				bdd.LogTemperature(temperature);
+				bdd.Disconnect();
+				
+				bus.close();
+				bus = null;
+				senseHat.close();
+				senseHat = null;
+				bdd = null;
+			}
+
 		}
 		catch (Exception ex)
 		{
@@ -71,7 +84,7 @@ public class ServletTest extends HttpServlet {
 		}
 		
 		// Custom object to get datas from the database
-		bddrequest = new BDDRequest();
+		bddrequest = new BDDRequest(piAddress,databaseName, databaseUser, databasePassword);
 		bddrequest.makeRequest("SELECT VALUE, DATE from MEASURES ORDER BY DATE ASC;");
 		
 		// Passing the custom class to the JSP
