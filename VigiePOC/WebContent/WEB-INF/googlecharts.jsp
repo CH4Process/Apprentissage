@@ -10,6 +10,7 @@
 <title>Test de google charts</title>
 </head>
 <body>
+	<p>Voici les données extraites du capteur : ${selectionform.getSelectionName()}</p>
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <div id="chart_div" align="center"></div>
   <br>
@@ -26,7 +27,7 @@
 	data.addColumn('number', 'Temperature');
 	var formatter_date = new google.visualization.DateFormat({pattern: 'EEEE d MMMM yyyy H:m:s'});
 			
-	data.addRows([<jstl_core:forEach items="${bddrequest.getRequestResultArray}" var="entry">[new Date(${entry[0]}),${entry[1]/1000}],</jstl_core:forEach>]);
+	data.addRows([<jstl_core:forEach items="${selectionform.getDatas()}" var="entry">[new Date(${entry[0]}),${entry[1]/100}],</jstl_core:forEach>]);
 	formatter_date.format(data,0);		
 	
 	var line_options = 

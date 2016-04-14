@@ -53,13 +53,13 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Alex/Downloads/YoctoLib.java.23400/Binaries/yoctolib-jee-1.10.1234-SNAPSHOT.jar" sourcepath="C:/Users/Alex/Downloads/YoctoLib.java.23400/Binaries/yoctolib-jee-1.10.1234-SNAPSHOT-sources.jar">
+	<classpathentry kind="lib" path="D:/DEV/CODE/LIBRARIES/JAVA/Yoctopuce/YoctoLib.java.23400/Binaries/yoctolib-jee-1.10.1234-SNAPSHOT.jar" sourcepath="D:/DEV/CODE/LIBRARIES/JAVA/Yoctopuce/YoctoLib.java.23400/Binaries/yoctolib-jee-1.10.1234-SNAPSHOT-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/C:/Users/Alex/Downloads/YoctoLib.java.23400/Binaries/yoctolib-jee-1.10.1234-SNAPSHOT-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/D:/DEV/CODE/LIBRARIES/JAVA/Yoctopuce/YoctoLib.java.23400/Binaries/yoctolib-jee-1.10.1234-SNAPSHOT-javadoc.jar!/"/>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Alex/Downloads/YoctoLib.java.23400/Binaries/yoctoAPI.jar">
+	<classpathentry kind="lib" path="D:/DEV/CODE/LIBRARIES/JAVA/Yoctopuce/YoctoLib.java.23400/Binaries/yoctoAPI.jar" sourcepath="D:/DEV/CODE/LIBRARIES/JAVA/Yoctopuce/YoctoLib.java.23400/Binaries/yoctolib-jee-1.10.1234-SNAPSHOT-javadoc.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
